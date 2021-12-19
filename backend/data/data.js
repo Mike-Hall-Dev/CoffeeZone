@@ -1,7 +1,6 @@
 const data = {
     products: [
         {
-            _id: '1',
             name: 'Perfect With Pie',
             category: 'Coffee',
             image: '/images/img_1.jpeg',
@@ -13,7 +12,6 @@ const data = {
             description: "Holiday dinners aren't complete without a slice of pie and the perfect cup of coffee to compliment your favorite dessert. To ensure you have the perfect pairing this season, we crafted a blend that perfectly compliments sweet and savory desserts. Perfect with Pie is only roasting for a limited time and is a must try for the medium roast lover!",
         },
         {
-            _id: '2',
             name: 'Snow Day Winter Roast',
             category: 'Coffee',
             image: '/images/img_2.jpeg',
@@ -25,7 +23,6 @@ const data = {
             description: "Our most popular blend of the year is back for the holiday season! Blending 100% Organic beans from Sumatra, Nicaragua, Papua New Guinea, and Colombia. If you are a dark roast lover, Snow Day is the perfect blend for you!",
         },
         {
-            _id: '3',
             name: 'Lovable Blend',
             category: 'Coffee',
             image: '/images/img_3.jpeg',
@@ -37,7 +34,6 @@ const data = {
             description: "This Medium-Dark Roast blend is 100% Arabica, 100% Organic, and 100% guaranteed to provide the perfect start to your morning. Featuring rich tasting notes of Milk Chocolate and Toasted Walnut, complimented by sweet notes of Marshmallow and Toffee.",
         },
         {
-            _id: '4',
             name: 'Sunny Spot Cold Brew',
             category: 'Coffee',
             image: '/images/img_4.jpeg',
@@ -49,7 +45,6 @@ const data = {
             description: "There is no better way to spend a day than by passing time in the morning sun, sipping a rich cold brew."
         },
         {
-            _id: '5',
             name: 'Lovable Cold Brew Glass',
             category: "Accessories",
             image: '/images/img_5.jpeg',
@@ -61,7 +56,6 @@ const data = {
             description: "We're excited to release a brand new glass celebrating love for our pups! Enjoy your favorite beverage and celebrate the start of each day with fresh brew!"
         },
         {
-            _id: '6',
             name: 'Soul Pup',
             category: 'Coffee',
             image: '/images/img_6.jpeg',
@@ -73,7 +67,6 @@ const data = {
             description: "This blend celebrates those special interactions with your dog that fill our lives with so much joy and the pups who remind us that the simplest moments bring the most happiness.",
         },
         {
-            _id: '7',
             name: 'Pumpkin Spice',
             category: 'Coffee',
             image: '/images/pumpkin_spice_gh.jpeg',
@@ -85,7 +78,6 @@ const data = {
             description: "Pumpkin Spice Blend will make all of your autumnal dreams come true with every brew of this rich, aromatic, and savory medium-roast blend. Featuring notes of fresh ground cinnamon, pie spice, baked pumpkin, and toasted vanilla bean, you may consider skipping the pumpkin pie for a second cup of this blend! "
         },
         {
-            _id: '8',
             name: 'REI Sno-Fi Camp Mug',
             category: 'Accessories',
             image: '/images/rei_snofi_mug.jpeg',
