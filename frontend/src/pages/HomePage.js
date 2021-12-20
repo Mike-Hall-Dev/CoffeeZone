@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { productsList } from "../actions/productActions.js";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
-import axios from "axios";
+import DisplayMessage from "../components/DisplayMessage.js";
+import SpinnerComponent from "../components/SpinnerComponent.js"
 
 const HomePage = () => {
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+    const productList = useSelector(state => state.productList);
+    const { loading, error, products } = productList;
+    console.log(loading)
+    console.log(error)
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            const { data } = await axios.get("/api/products");
-
-            setProducts(data);
-        }
-
-        fetchProducts();
-    }, [])
+        dispatch(productsList())
+    }, [dispatch]);
 
     return (
         <>
             <h1>Latest Products</h1>
-            <Row>
-                {products.map(product => (
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                        <Product product={product} />
-                    </Col>
-                ))}
-            </Row>
+            {products.length === 0 ? (<SpinnerComponent />) : error ? (<DisplayMessage>{error}</DisplayMessage>) :
+                (<Row>
+                    {products.map((product) => (
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                            <Product product={product} />
+                        </Col>
+                    ))}
+                </Row>)}
         </>
     )
 }
