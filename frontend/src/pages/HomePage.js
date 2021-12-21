@@ -19,7 +19,7 @@ const HomePage = () => {
 
     return (
         <>
-            <h1>Latest Products</h1>
+            <h1>All Products</h1>
             {products.length === 0 ? (<SpinnerComponent />) : error ? (<DisplayMessage>{error}</DisplayMessage>) :
                 (<Row>
                     {products.map((product) => (
