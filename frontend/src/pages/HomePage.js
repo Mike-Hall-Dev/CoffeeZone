@@ -10,8 +10,6 @@ const HomePage = () => {
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     const { loading, error, products } = productList;
-    console.log(loading)
-    console.log(error)
 
     useEffect(() => {
         dispatch(productsList())

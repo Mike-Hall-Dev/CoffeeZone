@@ -25,7 +25,7 @@ const ProductDetailsPage = ({ match, history }) => {
 
     return (
         <>
-            <Link className="btn btn-light my-3" to="/">Go Back</Link>
+            <Link className="btn btn-light my-3" to="/"><i class="fas fa-arrow-left"></i> Back</Link>
             {!product._id || product._id !== match.params.id ? <SpinnerComponent /> :
                 error ? <DisplayMessage>{error}</DisplayMessage> :
                     (

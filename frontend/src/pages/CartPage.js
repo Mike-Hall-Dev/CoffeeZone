@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+// import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Col, Row, Image, ListGroup, Form, Button, Card } from "react-bootstrap"
 import DisplayMessage from "../components/DisplayMessage.js";
@@ -19,7 +20,8 @@ const CartPage = ({ match, history, location }) => {
     }, [dispatch, productId, qty]);
 
     const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id))
+        dispatch(removeFromCart(id));
+        history.push("/cart");
     };
 
     const checkoutHandler = () => {
@@ -30,9 +32,8 @@ const CartPage = ({ match, history, location }) => {
         <Row>
             <Col md={8}>
                 <h1>Shopping Cart</h1>
-                {cartItems.length === 0 ? <DisplayMessage variant={"dark"}>Your cart is empty
-                    <Link to="/">Go Back</Link>
-                </DisplayMessage> : (
+                {cartItems.length === 0 ? <div><DisplayMessage variant={"dark"}>Your cart is empty
+                </DisplayMessage> <Link to="/">Go Back</Link></div> : (
                         <ListGroup varient="flush">
                             {cartItems.map(item => (
                                 <ListGroup.Item key={item.product}>
@@ -41,7 +42,7 @@ const CartPage = ({ match, history, location }) => {
                                             <Image src={item.image} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
                                         </Col>
                                         <Col md={2}>${item.price}</Col>
                                         <Col md={2}>
@@ -62,6 +63,7 @@ const CartPage = ({ match, history, location }) => {
                                     </Row>
                                 </ListGroup.Item>
                             ))}
+                            <Link to="/" my="4">Keep Shopping?</Link>
                         </ListGroup>
                     )}
             </Col>
