@@ -4,8 +4,8 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage";
 import SpinnerComponent from "../components/SpinnerComponent";
-import { register } from "../actions/userActions";
 import FormContainer from "../components/FormContainer.js"
+import { register } from "../actions/userActions";
 
 const RegisterPage = ({ location, history }) => {
     const [name, setName] = useState("");
