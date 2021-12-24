@@ -9,6 +9,7 @@ import ProfilePage from "../pages/ProfilePage.js";
 import ShippingPage from "../pages/ShippingPage.js";
 import PaymentPage from "../pages/PaymentPage.js";
 import PlaceOrderPage from "../pages/PlaceOrderPage.js";
+import OrderPage from "../pages/OrderPage.js";
 
 
 
@@ -20,6 +21,7 @@ const Routes = () => {
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/shipping" component={ShippingPage} />
             <Route exact path="/placeorder" component={PlaceOrderPage} />
+            <Route exact path="/order/:id" component={OrderPage} />
             <Route exact path="/payment" component={PaymentPage} />
             <Route exact path="/products/:id" component={ProductDetailsPage} />
             <Route exact path="/cart/:id?" component={CartPage} />
