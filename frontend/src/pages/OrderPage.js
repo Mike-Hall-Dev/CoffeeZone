@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Link } from "react-router-dom";
-import {  Col, Row, ListGroup, Image, Card } from "react-bootstrap";
+import { Col, Row, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage.js";
 import SpinnerComponent from "../components/SpinnerComponent.js";
-import { getOrderDetails, payOrder } from "../actions/orderActions.js";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import { getOrderDetails, payOrder, listMyOrders } from "../actions/orderActions.js";
+import { ORDER_PAY_RESET, ORDER_CREATE_RESET} from "../constants/orderConstants";
 
 
 const OrderPage = ({ match }) => {
@@ -34,9 +34,11 @@ const OrderPage = ({ match }) => {
             document.body.appendChild(script);
         };
 
-        if (!order || successPay) {
+        if (!order || successPay || order._id !== orderId) {
             dispatch({ type: ORDER_PAY_RESET });
             dispatch(getOrderDetails(orderId));
+            dispatch(listMyOrders());
+            dispatch({type: ORDER_CREATE_RESET})
         } else if (!order.isPaid) {
             if (!window.paypal) {
                 addPayPalScript()
@@ -45,14 +47,10 @@ const OrderPage = ({ match }) => {
             }
         }
 
-        // if (!order || order._id !== orderId) {
-        //     dispatch(getOrderDetails(orderId));
-        // }
     }, [dispatch, orderId, order, successPay]);
 
     const successPaymentHandler = (paymentResult) => {
-        console.log(paymentResult);
-        dispatch(payOrder(orderId, paymentResult))
+        dispatch(payOrder(orderId, paymentResult));
     }
 
     return loading ? <SpinnerComponent /> : error ? <DisplayMessage>{error}</DisplayMessage> : <>
@@ -93,7 +91,7 @@ const OrderPage = ({ match }) => {
                                                 <Image src={item.image} alt={item.name} fluid rounded />
                                             </Col>
                                             <Col>
-                                                <Link to={`/product/${item.product}`}>
+                                                <Link to={`/products/${item.product}`}>
                                                     {item.name}
                                                 </Link>
                                             </Col>
