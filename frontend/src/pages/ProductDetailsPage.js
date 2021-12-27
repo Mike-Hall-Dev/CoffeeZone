@@ -21,7 +21,9 @@ const ProductDetailsPage = ({ match, history }) => {
 
     const cartAddHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
-    }
+    };
+
+    const maxQty = product.countInStock > 10 ? 10 : product.countInStock;
 
     return (
         <>
@@ -58,7 +60,7 @@ const ProductDetailsPage = ({ match, history }) => {
                                                 <Col>
                                                     <Form.Select as="select" value={qty} data-size="1"
                                                         onChange={(e) => setQty(e.target.value)}>
-                                                        {[...Array(product.countInStock).keys()].map((val) => (
+                                                        {[...Array(maxQty).keys()].map((val) => (
                                                             <option key={val + 1} value={val + 1}>
                                                                 {val + 1}
                                                             </option>

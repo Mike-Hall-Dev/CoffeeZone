@@ -10,6 +10,8 @@ import ShippingPage from "../pages/ShippingPage.js";
 import PaymentPage from "../pages/PaymentPage.js";
 import PlaceOrderPage from "../pages/PlaceOrderPage.js";
 import OrderPage from "../pages/OrderPage.js";
+import UserListPage from "../pages/UserListPage.js";
+import UserEditPage from "../pages/UserEditPage.js";
 
 
 
@@ -25,6 +27,8 @@ const Routes = () => {
             <Route exact path="/payment" component={PaymentPage} />
             <Route exact path="/products/:id" component={ProductDetailsPage} />
             <Route exact path="/cart/:id?" component={CartPage} />
+            <Route exact path="/admin/userlist" component={UserListPage} />
+            <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
             <Route exact path="/" component={HomePage} />
         </Switch>
     )
