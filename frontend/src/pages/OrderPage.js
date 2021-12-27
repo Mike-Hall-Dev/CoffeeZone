@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Link } from "react-router-dom";
-import { Col, Row, ListGroup, Image, Card } from "react-bootstrap";
+import { Col, Row, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage.js";
 import SpinnerComponent from "../components/SpinnerComponent.js";
-import { getOrderDetails, payOrder, listMyOrders } from "../actions/orderActions.js";
-import { ORDER_PAY_RESET, ORDER_CREATE_RESET} from "../constants/orderConstants";
+import { getOrderDetails, payOrder, listMyOrders, deliverOrder } from "../actions/orderActions.js";
+import { ORDER_PAY_RESET, ORDER_CREATE_RESET, ORDER_DELIVER_RESET } from "../constants/orderConstants";
 
 
-const OrderPage = ({ match }) => {
+const OrderPage = ({ match, history }) => {
+
     const orderId = match.params.id;
     const [sdkReady, setSdkReady] = useState(false);
     const dispatch = useDispatch();
@@ -18,8 +19,18 @@ const OrderPage = ({ match }) => {
     const orderDetails = useSelector((state) => state.orderDetails);
     const { order, loading, error } = orderDetails;
 
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
     const orderPay = useSelector((state) => state.orderPay);
     const { loading: loadingPay, success: successPay } = orderPay;
+
+    const orderDeliver = useSelector((state) => state.orderDeliver);
+    const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+
+    if (!userInfo) {
+        history.push("/login")
+    };
 
     useEffect(() => {
         const addPayPalScript = async () => {
@@ -34,11 +45,12 @@ const OrderPage = ({ match }) => {
             document.body.appendChild(script);
         };
 
-        if (!order || successPay || order._id !== orderId) {
+        if (!order || successPay || successDeliver || order._id !== orderId) {
             dispatch({ type: ORDER_PAY_RESET });
+            dispatch({ type: ORDER_DELIVER_RESET });
             dispatch(getOrderDetails(orderId));
             dispatch(listMyOrders());
-            dispatch({type: ORDER_CREATE_RESET})
+            dispatch({ type: ORDER_CREATE_RESET })
         } else if (!order.isPaid) {
             if (!window.paypal) {
                 addPayPalScript()
@@ -47,10 +59,14 @@ const OrderPage = ({ match }) => {
             }
         }
 
-    }, [dispatch, orderId, order, successPay]);
+    }, [dispatch, orderId, order, successPay, successDeliver]);
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult));
+    };
+
+    const deliverHandler = () => {
+        dispatch(deliverOrder(order))
     }
 
     return loading ? <SpinnerComponent /> : error ? <DisplayMessage>{error}</DisplayMessage> : <>
@@ -66,7 +82,7 @@ const OrderPage = ({ match }) => {
                             <strong>Address: </strong>
                             {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.zipCode} {order.shippingAddress.country}
                         </p>
-                        {order.isDelivered ? <DisplayMessage variant="success">Delivered n {order.deliveredAt}</DisplayMessage> :
+                        {order.isDelivered ? <DisplayMessage variant="success">Delivered on {order.deliveredAt}</DisplayMessage> :
                             <DisplayMessage>Not Delivered</DisplayMessage>}
                     </ListGroup.Item>
 
@@ -115,7 +131,7 @@ const OrderPage = ({ match }) => {
                         <ListGroup.Item>
                             <Row>
                                 <Col>Shipping Cost</Col>
-                                <Col>${order.shippingPrice}</Col>
+                                <Col>${order.shippingPrice}.00</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
@@ -140,6 +156,14 @@ const OrderPage = ({ match }) => {
                             </ListGroup.Item>
                         )}
 
+                        {loadingDeliver && <SpinnerComponent />}
+                        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                            <ListGroup.Item>
+                                <Button type="button" className="btn-btn-block" onClick={deliverHandler}>
+                                    Mark as Delivered
+                                </Button>
+                            </ListGroup.Item>
+                        )}
                     </ListGroup>
                 </Card>
             </Col>

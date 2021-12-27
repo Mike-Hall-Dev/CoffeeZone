@@ -18,7 +18,7 @@ const PlaceOrderPage = ({ history }) => {
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
     cart.shippingPrice = decimalMath(cart.itemsPrice > 100 ? 0 : 5);
     cart.taxPrice = decimalMath(Number((cart.itemsPrice * .14).toFixed(2)));
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    cart.totalPrice = decimalMath(Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice))
 
     const orderCreate = useSelector(state => state.orderCreate);
     const { order, success, error } = orderCreate;
