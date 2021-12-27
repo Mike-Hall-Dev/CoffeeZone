@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userActions.js"
+import SearchBar from "./SearchBar.js"
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -23,9 +24,10 @@ const NavBar = () => {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+                        <SearchBar />
                         <Nav className="ms-auto">
                             <LinkContainer to="/cart">
-                                <Nav.Link><i className="fas fa-shopping-cart"></i> Cart</Nav.Link>
+                                <Nav.Link><i className="fas fa-shopping-cart"></i></Nav.Link>
                             </LinkContainer>
                             {userInfo ? (
                                 <NavDropdown title={userInfo.name} id="username">
@@ -35,7 +37,7 @@ const NavBar = () => {
                                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             ) : <LinkContainer to="/login">
-                                    <Nav.Link><i className="fas fa-user"></i>Sign In</Nav.Link>
+                                    <Nav.Link><i className="fas fa-user"></i></Nav.Link>
                                 </LinkContainer>}
                             {userInfo && userInfo.isAdmin && (
                                 <NavDropdown title="Admin" id="adminmenu">

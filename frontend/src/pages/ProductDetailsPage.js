@@ -120,6 +120,10 @@ const ProductDetailsPage = ({ match, history }) => {
                                                 <p>{review.comment}</p>
                                             </ListGroup.Item>
                                         ))}
+                                    </ListGroup>
+                                </Col>
+                                <Col md={6} className="my-5">
+                                    <ListGroup>
                                         <ListGroup.Item>
                                             <h2>Leave A Review</h2>
                                             {errorReview && <DisplayMessage>{errorReview}</DisplayMessage>}
