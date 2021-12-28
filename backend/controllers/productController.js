@@ -117,6 +117,32 @@ const getTopProducts = asyncHandler(async (req, res) => {
     res.json(products)
 });
 
+const getProductsByCategory = asyncHandler(async (req, res) => {
+    const { category } = req.params;
+    const pageSize = 15;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Product.countDocuments({ category: category });
+    const products = await Product.find({ category: category })
+        .limit(pageSize)
+        .skip(pageSize * (page - 1));
+
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
+});
+
+const getProductsByBrand = asyncHandler(async (req, res) => {
+    const { brand } = req.params;
+    const pageSize = 15;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Product.countDocuments({ brand: brand });
+    const products = await Product.find({ brand: brand })
+        .limit(pageSize)
+        .skip(pageSize * (page - 1));
+
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
+});
+
 export {
     getProductById,
     getProducts,
@@ -124,5 +150,7 @@ export {
     createProduct,
     updateProduct,
     createProductReview,
-    getTopProducts
+    getTopProducts,
+    getProductsByBrand,
+    getProductsByCategory
 }

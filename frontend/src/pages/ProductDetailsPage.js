@@ -7,6 +7,8 @@ import Rating from "../components/Rating";
 import SpinnerComponent from "../components/SpinnerComponent.js";
 import DisplayMessage from "../components/DisplayMessage.js";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants.js"
+import HelmetWrapper from "../components/HelmetWrapper.js";
+
 
 const ProductDetailsPage = ({ match, history }) => {
     const [qty, setQty] = useState(1);
@@ -56,6 +58,8 @@ const ProductDetailsPage = ({ match, history }) => {
                 error ? <DisplayMessage>{error}</DisplayMessage> :
                     (
                         <>
+                            <HelmetWrapper title={product.name} />
+
                             <Row>
                                 <Col md={6}>
                                     <Image src={product.image} alt={product.name} fluid />

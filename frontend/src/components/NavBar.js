@@ -17,14 +17,21 @@ const NavBar = () => {
 
     return (
         <header>
-            <Navbar bg="primary" variant='dark' expand="lg" collapseOnSelect>
+            <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>Coffee Zone</Navbar.Brand>
+
+                        <Navbar.Brand>
+                            <img src="/images/logo.png" alt="coffee zone logo" style={{
+                                height: "70px",
+                                width: "70px",
+                                borderRadius: "50%",
+                                marginRight: ".5rem"
+                            }} /> Coffee Zone
+                        </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <SearchBar />
                         <Nav className="ms-auto">
                             <LinkContainer to="/cart">
                                 <Nav.Link><i className="fas fa-shopping-cart"></i></Nav.Link>

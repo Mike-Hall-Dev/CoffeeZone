@@ -10,8 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <main className="py-3">
-        <Container>
+      <main>
+        <Container fluid className='mt-0 px-0 g-0'>
           <Routes />
         </Container>
       </main>

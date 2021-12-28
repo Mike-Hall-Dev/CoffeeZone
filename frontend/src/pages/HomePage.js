@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { productsList } from "../actions/productActions.js";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import Product from "../components/Product";
 import DisplayMessage from "../components/DisplayMessage.js";
 import SpinnerComponent from "../components/SpinnerComponent.js"
 import ProductCarousel from "../components/ProductCarousel.js"
 import Paginate from "../components/Paginate.js";
+import HelmetWrapper from "../components/HelmetWrapper.js";
+import HeroImage from "../components/HeroImage.js"
 
 const HomePage = ({ match }) => {
     const keyword = match.params.keyword;
@@ -22,10 +24,12 @@ const HomePage = ({ match }) => {
 
     return (
         <>
-            {!keyword && <ProductCarousel />}
-            <h1>All Products</h1>
+            <HelmetWrapper />
+
+            {!keyword && pageNumber < 2 && <HeroImage />}
+            {!keyword && <> <ProductCarousel /> </>}
             {products.length === 0 && keyword !== "" ? <DisplayMessage>Product Not Found</DisplayMessage>
-                : <>{
+                : <Container className="my-3">{
                     products.length === 0 ? (<SpinnerComponent />) : error ? (<DisplayMessage>{error}</DisplayMessage>) :
                         (<Row>
                             {products.map((product) => (
@@ -35,7 +39,7 @@ const HomePage = ({ match }) => {
                             ))}
                         </Row>)
 
-                } <Paginate pages={pages} page={page} keyword={keyword ? keyword : ""} /></>}
+                } <div style={{ text: "center" }}><Paginate pages={pages} page={page} keyword={keyword ? keyword : ""} /></div></Container>}
 
         </>
     )

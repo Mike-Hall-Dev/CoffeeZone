@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
     return pages > 1 && (
-        <Pagination>
+        <Pagination className="d-flex justify-content-center my-5">
             {[...Array(pages).keys()].map(x => (
                 <LinkContainer key={x + 1} to={keyword ? `/search/${keyword}/page/${x + 1}`
                     : `/page/${x + 1}`}>
