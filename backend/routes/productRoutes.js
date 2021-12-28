@@ -1,10 +1,11 @@
 import express from "express";
-import { getProductById, getProducts, deleteProduct, createProduct, updateProduct, createProductReview } from "../controllers/productController.js";
+import { getProductById, getProducts, deleteProduct, createProduct, updateProduct, createProductReview, getTopProducts } from "../controllers/productController.js";
 import { authorizeUser, adminCheck } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 router.get("/", getProducts);
+router.get("/top", getTopProducts);
 router.post("/", authorizeUser, adminCheck, createProduct);
 
 router.get("/:id", getProductById);

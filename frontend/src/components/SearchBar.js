@@ -18,14 +18,6 @@ const SearchBar = () => {
     }
 
     return (
-        // <Form onSubmit={submitHandler} inline>
-        //     <Form.Control type="text" name="q" onChange={(e) => setKeyword(e.target.value)}
-        //         placeholder="Search Products" className="mr-sm-2 ml-sm-5">
-
-        //     </Form.Control>
-        //     <Button type="submit" variant="outline-success" className="btn btn-sm">Search</Button>
-
-        // </Form>
         <>
             <Container className="mx-5 my-3">
                 <Col>
@@ -47,7 +39,6 @@ const SearchBar = () => {
                         >
                             <i className='fas fa-search'></i>
                         </Button>
-                        {/* </InputGroup> */}
                     </Form>
                 </Col>
             </Container>

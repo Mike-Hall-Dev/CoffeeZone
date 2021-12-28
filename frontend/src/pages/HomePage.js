@@ -5,6 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import DisplayMessage from "../components/DisplayMessage.js";
 import SpinnerComponent from "../components/SpinnerComponent.js"
+import ProductCarousel from "../components/ProductCarousel.js"
 import Paginate from "../components/Paginate.js";
 
 const HomePage = ({ match }) => {
@@ -21,6 +22,7 @@ const HomePage = ({ match }) => {
 
     return (
         <>
+            {!keyword && <ProductCarousel />}
             <h1>All Products</h1>
             {products.length === 0 && keyword !== "" ? <DisplayMessage>Product Not Found</DisplayMessage>
                 : <>{

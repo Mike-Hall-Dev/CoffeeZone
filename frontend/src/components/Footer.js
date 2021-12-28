@@ -8,7 +8,7 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col className="text-center py-3">
-                        Placeholder Footer Text
+                        This is not a real store.
                 </Col>
                 </Row>
             </Container>
