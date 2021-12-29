@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Link } from "react-router-dom";
-import { Col, Row, ListGroup, Image, Card, Button } from "react-bootstrap";
+import { Col, Row, ListGroup, Image, Card, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage.js";
 import SpinnerComponent from "../components/SpinnerComponent.js";
@@ -69,7 +69,7 @@ const OrderPage = ({ match, history }) => {
         dispatch(deliverOrder(order))
     }
 
-    return loading ? <SpinnerComponent /> : error ? <DisplayMessage>{error}</DisplayMessage> : <>
+    return loading ? <Container className="my-3"><SpinnerComponent /></Container> : error ? <DisplayMessage>{error}</DisplayMessage> : <Container className="my-3">
         <h1>Order {order._id}</h1>
         <Row>
             <Col md={8}>
@@ -168,7 +168,7 @@ const OrderPage = ({ match, history }) => {
                 </Card>
             </Col>
         </Row>
-    </>
+    </Container>
 }
 
 export default OrderPage

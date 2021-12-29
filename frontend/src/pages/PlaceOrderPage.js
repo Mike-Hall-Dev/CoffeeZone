@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Button, Col, Row, ListGroup, Image, Card } from "react-bootstrap";
+import { Button, Col, Row, ListGroup, Image, Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage.js";
 import CheckoutSteps from "../components/CheckoutSteps.js";
@@ -43,7 +43,7 @@ const PlaceOrderPage = ({ history }) => {
     };
 
     return (
-        <>
+        <Container className="my-3">
             <CheckoutSteps step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>
@@ -132,7 +132,7 @@ const PlaceOrderPage = ({ history }) => {
                     </Card>
                 </Col>
             </Row>
-        </>
+        </Container>
     )
 }
 

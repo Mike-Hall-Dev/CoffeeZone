@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage";
 import SpinnerComponent from "../components/SpinnerComponent";
@@ -25,7 +25,7 @@ const OrderListPage = ({ history }) => {
 
 
     return (
-        <>
+        <Container className="my-3">
             <h1>Orders</h1>
             {loading ? <SpinnerComponent /> : error ? <DisplayMessage>{error}</DisplayMessage>
                 : (
@@ -69,7 +69,7 @@ const OrderListPage = ({ history }) => {
                         </tbody>
                     </Table>
                 )}
-        </>
+        </Container>
     )
 }
 

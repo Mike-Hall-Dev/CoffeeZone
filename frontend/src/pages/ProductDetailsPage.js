@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails, createProductReview } from "../actions/productActions";
 import { Link } from "react-router-dom";
-import { Col, Row, Image, ListGroup, Button, Form } from "react-bootstrap";
+import { Col, Row, Image, ListGroup, Button, Form, Container } from "react-bootstrap";
 import Rating from "../components/Rating";
 import SpinnerComponent from "../components/SpinnerComponent.js";
 import DisplayMessage from "../components/DisplayMessage.js";
@@ -48,11 +48,10 @@ const ProductDetailsPage = ({ match, history }) => {
         }));
     }
 
-    const maxQty = product.countInStock > 10 ? 10 : product.countInStock;
-
+    let maxQty = product.countInStock > 10 ? 10 : product.countInStock;
 
     return (
-        <>
+        <Container className="my-3">
             <Link className="btn btn-light my-3" to="/"><i className="fas fa-arrow-left"></i> Back</Link>
             {!product._id || product._id !== match.params.id ? <SpinnerComponent /> :
                 error ? <DisplayMessage>{error}</DisplayMessage> :
@@ -111,7 +110,7 @@ const ProductDetailsPage = ({ match, history }) => {
                                 </Col>
 
                             </Row>
-                            <Row>
+                            <Row className="d-flex justify-content-center my-5">
                                 <Col md={6}>
                                     <h2>Reviews</h2>
                                     {product.reviews.length === 0 && <DisplayMessage variant="info">No Reviews</DisplayMessage>}
@@ -126,7 +125,7 @@ const ProductDetailsPage = ({ match, history }) => {
                                         ))}
                                     </ListGroup>
                                 </Col>
-                                <Col md={6} className="my-5">
+                                <Col md={6} >
                                     <ListGroup>
                                         <ListGroup.Item>
                                             <h2>Leave A Review</h2>
@@ -161,7 +160,7 @@ const ProductDetailsPage = ({ match, history }) => {
                         </>
                     )}
 
-        </>
+        </Container>
     )
 }
 

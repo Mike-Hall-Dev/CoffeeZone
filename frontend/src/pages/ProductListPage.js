@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col } from "react-bootstrap";
+import { Table, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage";
 import SpinnerComponent from "../components/SpinnerComponent";
@@ -47,12 +47,12 @@ const ProductListPage = ({ history, match }) => {
     }
 
     return (
-        <>
+        <Container className="my-3">
             <Row className="align-items-center">
                 <Col>
                     <h1>Products</h1>
                 </Col>
-                <Col className="pl-5">
+                <Col className="d-flex justify-content-end">
                     <Button className="my-3 text-left" onClick={createProductHandler}>
                         <i className="fas fa-plus"></i> Create Product
                     </Button>
@@ -100,7 +100,7 @@ const ProductListPage = ({ history, match }) => {
                         </tbody>
                     </Table>
                 )}
-        </>
+        </Container>
     )
 }
 

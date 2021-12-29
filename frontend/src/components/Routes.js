@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import CartPage from "../pages/CartPage.js";
@@ -39,6 +39,7 @@ const Routes = () => {
             <Route exact path="/page/:pageNumber" component={HomePage} />
             <Route exact path="/search/:keyword/page/:pageNumber" component={HomePage} />
             <Route exact path="/" component={HomePage} />
+            <Redirect to="/" />
         </Switch>
     )
 }

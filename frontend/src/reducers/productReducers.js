@@ -22,6 +22,12 @@ import {
     PRODUCT_TOP_PRODUCTS_REQUEST,
     PRODUCT_TOP_PRODUCTS_SUCCESS,
     PRODUCT_TOP_PRODUCTS_FAIL,
+    PRODUCT_BRAND_REQUEST,
+    PRODUCT_BRAND_SUCCESS,
+    PRODUCT_BRAND_FAIL,
+    PRODUCT_CATEGORY_FAIL,
+    PRODUCT_CATEGORY_SUCCESS,
+    PRODUCT_CATEGORY_REQUEST,
 } from "../constants/productConstants.js"
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -105,6 +111,44 @@ export const productReviewReducer = (state = { product: {} }, action) => {
             return {}
         case PRODUCT_CREATE_REVIEW_FAIL:
             return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const productCategoryReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_CATEGORY_REQUEST:
+            return { loading: true, products: [] };
+        case PRODUCT_CATEGORY_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload.products,
+                pages: action.payload.pages,
+                page: action.payload.page,
+            };
+        case PRODUCT_CATEGORY_FAIL:
+            return { loading: false, error: action.payload };
+
+        default:
+            return state;
+    }
+};
+
+export const productBrandReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_BRAND_REQUEST:
+            return { loading: true, products: [] };
+        case PRODUCT_BRAND_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload.products,
+                pages: action.payload.pages,
+                page: action.payload.page,
+            };
+        case PRODUCT_BRAND_FAIL:
+            return { loading: false, error: action.payload };
+
         default:
             return state;
     }

@@ -18,18 +18,21 @@ const ProductCarousel = () => {
     }, [dispatch]);
 
     return loading ? <SpinnerComponent /> : error ? <DisplayMessage>{error}</DisplayMessage> : (
-        <Carousel pause='hover' variant="dark">
-            {products.map(product => (
-                <Carousel.Item key={product._id}>
-                    <Link to={`/products/${product._id}`}>
-                        <Image src={product.image} alt={product.name} fluid />
-                        <Carousel.Caption className="carosel-caption">
-                            <h6 style={{ color: "black" }}>{product.name} (${product.price})</h6>
-                        </Carousel.Caption>
-                    </Link>
-                </Carousel.Item>
-            ))}
-        </Carousel>
+        <>
+            <h3 className="text-center">Featured Items</h3>
+            <Carousel pause='hover' variant="dark">
+                {products.map(product => (
+                    <Carousel.Item key={product._id}>
+                        <Link to={`/products/${product._id}`}>
+                            <Image src={product.image} alt={product.name} fluid />
+                            <Carousel.Caption className="carosel-caption">
+                                <h6 style={{ color: "black" }}>{product.name} (${product.price})</h6>
+                            </Carousel.Caption>
+                        </Link>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        </>
     )
 }
 

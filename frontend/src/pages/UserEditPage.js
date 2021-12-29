@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayMessage from "../components/DisplayMessage";
 import SpinnerComponent from "../components/SpinnerComponent";
@@ -45,7 +45,7 @@ const UserEditPage = ({ match, history }) => {
     };
 
     return (
-        <>
+        <Container className="my-3">
             <Link to="/admin/userlist" className="btn-btn-dark my-3">
                 Go Back
         </Link>
@@ -81,7 +81,7 @@ const UserEditPage = ({ match, history }) => {
 
 
             </FormContainer>
-        </>
+        </Container>
     )
 }
 

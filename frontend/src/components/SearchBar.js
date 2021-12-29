@@ -10,6 +10,7 @@ const SearchBar = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        e.target.reset()
         if (keyword.trim()) {
             history.push(`/search/${keyword}`)
         } else {
@@ -19,7 +20,7 @@ const SearchBar = () => {
 
     return (
         <>
-            <Container className="mx-5 my-3">
+            <Container style={{ paddingLeft: "0" }}>
                 <Col>
                     <Form onSubmit={submitHandler} className="d-flex justify-content-center">
                         <Form.Control

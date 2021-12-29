@@ -19,7 +19,13 @@ import {
     PRODUCT_CREATE_REVIEW_REQUEST,
     PRODUCT_TOP_PRODUCTS_REQUEST,
     PRODUCT_TOP_PRODUCTS_SUCCESS,
-    PRODUCT_TOP_PRODUCTS_FAIL
+    PRODUCT_TOP_PRODUCTS_FAIL,
+    PRODUCT_CATEGORY_REQUEST,
+    PRODUCT_CATEGORY_SUCCESS,
+    PRODUCT_CATEGORY_FAIL,
+    PRODUCT_BRAND_REQUEST,
+    PRODUCT_BRAND_SUCCESS,
+    PRODUCT_BRAND_FAIL
 } from "../constants/productConstants.js"
 
 
@@ -176,6 +182,52 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
             payload: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         })
+    }
+};
+
+export const listCategoryProducts = (category) => async (dispatch) => {
+    try {
+        dispatch({
+            type: PRODUCT_CATEGORY_REQUEST,
+        });
+
+        const { data } = await axios.get(`/api/products/category/${category}`);
+
+        dispatch({
+            type: PRODUCT_CATEGORY_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_CATEGORY_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+
+export const listBrandProducts = (brand) => async (dispatch) => {
+    try {
+        dispatch({
+            type: PRODUCT_BRAND_REQUEST,
+        });
+
+        const { data } = await axios.get(`/api/products/brand/${brand}`);
+
+        dispatch({
+            type: PRODUCT_BRAND_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_BRAND_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
     }
 };
 

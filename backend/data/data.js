@@ -87,7 +87,96 @@ const data = {
             rating: 4.0,
             numReviews: 20,
             description: "Lo-fi plus snow equals sno-fi. Or at least we think so and thus: the REI Co-op Sno-Fi graphic camp mug, which keeps your hot things hot on the mountain."
-        }
+        },
+        {
+            name: 'United By Blue',
+            category: 'Accessories',
+            image: '/images/united_by_blue.jpeg',
+            price: 12.99,
+            countInStock: 30,
+            brand: 'REI',
+            rating: 3.5,
+            numReviews: 1,
+            description: "Sitting around an early morning campfire is almost as fun as the one the night before. Enjoy a big cup of coffee in this 22 oz enamel mug."
+        },
+        {
+            name: 'Snow Peak Mug',
+            category: 'Accessories',
+            image: '/images/snow_peak_mug.jpeg',
+            price: 29.99,
+            countInStock: 15,
+            brand: 'REI',
+            rating: 4.0,
+            numReviews: 3,
+            description: "Upgrade your mug game with the Snow Peak Mug. Its rugged titanium design keeps your drinks warm for hours on end."
+        },
+        {
+            name: 'Glacier Enamel Mug',
+            category: 'Accessories',
+            image: '/images/glacier_enamel_mug.jpeg',
+            price: 15.99,
+            countInStock: 20,
+            brand: 'REI',
+            rating: 3.4,
+            numReviews: 4,
+            description: "Sip your coffee under the open sky with the GSI Outdoors Glacier Enamelware Camp mug."
+        },
+        {
+            name: 'French Roast',
+            category: 'Coffee',
+            image: '/images/peets_french_roast.png',
+            price: 13.99,
+            countInStock: 40,
+            brand: 'Peets',
+            rating: 4.0,
+            numReviews: 1,
+            description: "For those who relish smoky overtones and a pleasant bite, drinking French Roast exemplifies our commitment to rich, powerful coffee."
+        },
+        {
+            name: 'Uzuri African Blend',
+            category: 'Coffee',
+            image: '/images/african_blend.png',
+            price: 12.99,
+            countInStock: 40,
+            brand: 'Peets',
+            rating: 4.0,
+            numReviews: 1,
+            description: "Help small-scale farmers improve their lives with every cup of this exquisite, juicy coffee."
+        },
+        {
+            name: 'Jr Reserve Blend',
+            category: 'Coffee',
+            image: '/images/jr_reserve_peets.png',
+            price: 11.99,
+            countInStock: 30,
+            brand: 'Peets',
+            rating: 5.0,
+            numReviews: 3,
+            description: "From perhaps the most discerning palate in the specialty coffee world comes this transcendent blend of exceptional, rare, full-bodied coffees."
+        },
+        {
+            name: 'Baridi Blend',
+            category: 'Coffee',
+            image: '/images/baridi_blend.png',
+            price: 12.99,
+            countInStock: 20,
+            brand: 'Peets',
+            rating: 4.0,
+            numReviews: 1,
+            description: "For the lover of cold brew comes this refreshingly crisp, artfully crafted blend of bold, juicy East African coffees."
+        },
+        {
+            name: 'Holiday Blend',
+            category: 'Coffee',
+            image: '/images/holiday_blend.png',
+            price: 12.99,
+            countInStock: 20,
+            brand: 'Peets',
+            rating: 4.0,
+            numReviews: 2,
+            description: "A spirited blend—lush, silken, and sweet—drawn from the best crops of spring, summer, and fall. Body & blackcurrant, spice & seasonal cheer."
+        },
     ]
 };
 export default data.products;
+
