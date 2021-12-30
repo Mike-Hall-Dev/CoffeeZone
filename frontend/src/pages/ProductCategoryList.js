@@ -6,28 +6,28 @@ import SpinnerComponent from "../components/SpinnerComponent";
 import Paginate from "../components/Paginate";
 import DisplayMessage from "../components/DisplayMessage";
 import HelmetWrapper from "../components/HelmetWrapper";
-import { listBrandProducts } from "../actions/productActions";
+import { listCategoryProducts } from "../actions/productActions";
 
 
-const ProductBrandsList = ({ match }) => {
-    const brand = match.params.brand;
+const ProductCategoryList = ({ match }) => {
+    const category = match.params.brand;
 
     console.log("Params: ", match.params)
-
+    console.log("Category:", category)
 
     const pageNumber = match.params.pageNumber || 1;
     const dispatch = useDispatch();
 
-    const productBrand = useSelector((state) => state.productBrand, shallowEqual);
-    const { loading, error, products, page, pages } = productBrand;
+    const productCategory = useSelector((state) => state.productCategory, shallowEqual);
+    const { loading, error, products, page, pages } = productCategory;
 
     useEffect(() => {
-        dispatch(listBrandProducts(brand, pageNumber));
-    }, [dispatch, brand, pageNumber]);
+        dispatch(listCategoryProducts(category, pageNumber));
+    }, [dispatch, pageNumber, category]);
 
     return (
         <>
-            <HelmetWrapper title={brand + " page"} />
+            <HelmetWrapper title={category + " page"} />
             <Container fluid className='px-5 pt-3'>
                 {loading ? (
                     <SpinnerComponent />
@@ -40,7 +40,7 @@ const ProductBrandsList = ({ match }) => {
                                 </Col>
                             ))}
                         </Row>
-                        <Paginate pages={pages} page={page} brand={brand ? brand : ""} />
+                        <Paginate pages={pages} page={page} category={category ? category : ""} />
                     </>
                 )}
             </Container>
@@ -48,4 +48,4 @@ const ProductBrandsList = ({ match }) => {
     );
 };
 
-export default ProductBrandsList;
+export default ProductCategoryList;

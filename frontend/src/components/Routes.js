@@ -15,6 +15,8 @@ import UserEditPage from "../pages/UserEditPage.js";
 import ProductListPage from "../pages/ProductListPage.js";
 import ProductEditPage from "../pages/ProductEditPage.js";
 import OrderListPage from "../pages/OrderListPage.js";
+import ProductBrandsList from "../pages/ProductBrandsList.js";
+import ProductCategoryList from "../pages/ProductCategoryList.js";
 
 
 
@@ -30,6 +32,8 @@ const Routes = () => {
             <Route exact path="/admin/orderlist" component={OrderListPage} />
             <Route exact path="/payment" component={PaymentPage} />
             <Route exact path="/products/:id" component={ProductDetailsPage} />
+            <Route path='/brand/:brand' component={ProductBrandsList} />
+            <Route path='/category/:brand' component={ProductCategoryList} />
             <Route exact path="/cart/:id?" component={CartPage} />
             <Route exact path="/admin/userlist" component={UserListPage} />
             <Route exact path="/admin/productlist" component={ProductListPage} />

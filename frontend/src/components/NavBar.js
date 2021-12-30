@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userActions.js"
 import SearchBar from "./SearchBar.js"
+import ProductBrandsList from "../pages/ProductBrandsList.js"
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const NavBar = () => {
 
                             <NavDropdown title="Brands" id="categories" style={{ color: "FFFFFF" }}>
                                 {[...productBrands].map(brand => (
-                                    <LinkContainer to={`/brands/${brand}`}>
+                                    <LinkContainer to={`/brand/${brand}`}>
                                         <NavDropdown.Item>{brand}</NavDropdown.Item>
                                     </LinkContainer>
                                 ))}
@@ -65,7 +66,7 @@ const NavBar = () => {
 
                             <NavDropdown title="Categories" id="categories" style={{ marginRight: "10px" }}>
                                 {[...productCategories].map(category => (
-                                    <LinkContainer to={`/categories/${category}`}>
+                                    <LinkContainer to={`/category/${category}`}>
                                         <NavDropdown.Item>{category}</NavDropdown.Item>
                                     </LinkContainer>
                                 ))}
