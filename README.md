@@ -11,7 +11,7 @@ This project was built using the MERN stack. It is a mock of a typical eCommerce
 
 ### Dependencies
 
-* You will need to have Node installed on your machine to set this product up locally.
+* You will need to have Node installed on your machine to set this project up locally.
 
 ### Clone or Download
 ```terminal
