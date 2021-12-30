@@ -12,9 +12,6 @@ import { listCategoryProducts } from "../actions/productActions";
 const ProductCategoryList = ({ match }) => {
     const category = match.params.brand;
 
-    console.log("Params: ", match.params)
-    console.log("Category:", category)
-
     const pageNumber = match.params.pageNumber || 1;
     const dispatch = useDispatch();
 
