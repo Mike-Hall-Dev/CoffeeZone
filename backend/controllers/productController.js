@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
 
 const getProducts = asyncHandler(async (req, res) => {
+    //Page sizes can be changed by simply manupilating this variable.
     const pageSize = 12
     const page = Number(req.query.pageNumber) || 1
 
