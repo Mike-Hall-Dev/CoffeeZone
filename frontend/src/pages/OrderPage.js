@@ -137,7 +137,7 @@ const OrderPage = ({ match, history }) => {
                         <ListGroup.Item>
                             <Row>
                                 <Col>Tax</Col>
-                                <Col>${order.taxPrice}</Col>
+                                <Col>${order.taxPrice.toFixed(2)}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
