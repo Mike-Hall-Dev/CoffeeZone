@@ -5,7 +5,7 @@ A mock ecommerce platform for coffee and coffee accessories.
 You can view the deployed version here - https://coffeezoneapp.herokuapp.com/
 
 ## Description
-This project was built using the MERN stack. It is a mock of a typical eCommerce application. Users can shop for products and even "checkout" with the paypal sandbox implemented. Sign in will be required to checkout, and orders can be viewed/tracked on a users profile.
+This project was built using the MERN stack. It is a mock of a typical eCommerce application. Users can shop for products and even "checkout" with the paypal sandbox implemented. Sign in will be required to checkout, and orders can be viewed/tracked on a users profile. Additional admin pages and functionality are present for authorized users.
 
 ## Getting Started
 
