@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userActions.js"
 import SearchBar from "./SearchBar.js"
-import ProductBrandsList from "../pages/ProductBrandsList.js"
+// import ProductBrandsList from "../pages/ProductBrandsList.js"
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -12,23 +12,26 @@ const NavBar = () => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    const productList = useSelector(state => state.productList);
-    const { products } = productList;
+    const productCategories = ["Coffee", "Accessories"]
+    const productBrands = ["REI", "Grounds & Hounds", "Peets"]
 
-    const productCategories = new Set();
-    const productBrands = new Set();
+    // const productList = useSelector(state => state.productList);
+    // const { products } = productList;
 
-    products.forEach((product) => {
-        if (product.category !== 'Sample Category') {
-            productCategories.add(product.category)
-        }
-    });
+    // const productCategories = new Set();
+    // const productBrands = new Set();
 
-    products.forEach((product) => {
-        if (product.brand !== 'Sample Brand') {
-            productBrands.add(product.brand)
-        }
-    });
+    // products.forEach((product) => {
+    //     if (product.category !== 'Sample Category') {
+    //         productCategories.add(product.category)
+    //     }
+    // });
+
+    // products.forEach((product) => {
+    //     if (product.brand !== 'Sample Brand') {
+    //         productBrands.add(product.brand)
+    //     }
+    // });
 
     const logoutHandler = () => {
         dispatch(logout());

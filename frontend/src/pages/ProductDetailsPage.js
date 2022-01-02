@@ -59,7 +59,7 @@ const ProductDetailsPage = ({ match, history }) => {
                         <>
                             <HelmetWrapper title={product.name} />
 
-                            <Row>
+                            <Row className="d-flex justify-content-around">
                                 <Col md={6}>
                                     <Image src={product.image} alt={product.name} fluid />
                                 </Col>
