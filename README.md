@@ -39,9 +39,10 @@ $ npm run server
 - React-Bootstrap
 - Redux for state management
 - Morgan for server logging
-- JWT for user authorization
+- JSON Web Token for user authentication
 - BcryptJS for user password hashing
 - Mongoose for defining models
+- React Helmet
 - React testing library & Jest (soon to come)
 
 ### Features
